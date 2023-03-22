@@ -1,0 +1,7 @@
+SQLAlchemy==1.4.40
+streamlit
+pandas
+pymysql
+matplotlib
+numpy
+requests
