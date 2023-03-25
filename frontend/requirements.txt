@@ -10,3 +10,8 @@ datetime
 altair
 statistics
 # PIL
+streamlit_authenticator
+yaml
+yaml.loader
+streamlit_authenticator
+authenticator
