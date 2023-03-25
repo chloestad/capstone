@@ -1,10 +1,11 @@
-from flask import Flask, jsonify
+# api main.py
+from flask import Flask, jsonify, request, make_response
 from sqlalchemy import create_engine
 from datetime import datetime
 from flask_restx import Api, Namespace, Resource, \
     reqparse, inputs, fields
 
-# Seting variables to connect to Database
+# Seting variables to connect to my Database
 host = "34.175.139.210"
 user = "root"
 passw = "sN73p647h4VBqeRbDw1d"
@@ -14,10 +15,17 @@ port = "3306"
 
 app = Flask(__name__)
 
+# ---------
+# Token to access the APIs
+auth_db = {
+    "69fyX4eByCpWGHnmztRS"
+}
+# ---------
+
 app.config["SQLALCHEMY_DATABASE_URI"] = host
 
 api = Api(app, version = '1.0',
-    title = "Chloé's Rest API with FLASK - CAPSTONE",
+    title = 'Rest API with FLASK - CAPSTONE',
     description = """
         This RESTS API is an API built with FLASK and FLASK-RESTX libraries to retrieve data from my Google Cloud
         database.
@@ -63,7 +71,16 @@ class get_all_users(Resource):
             FROM customers;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @customers.route("/customers/ages")
 # Endpoint to get the data from the table customers_by_age.
@@ -78,7 +95,16 @@ class get_customer_by_age(Resource):
             FROM customers_by_age;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @customers.route("/customers/ages/spent")
 # Endpoint to get the data from the table total_spent_by_age.
@@ -94,7 +120,16 @@ class get_amount_spent_age(Resource):
             FROM total_spent_by_age;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @customers.route("/customers/<string:id>")
 @customers.doc(params = {'id': 'The ID of the user'})
@@ -111,7 +146,16 @@ class select_user(Resource):
             WHERE customer_id = '{0}';""".format(id)
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 # ------------------------------------------ ARTICLES ------------------------------------------
 '''
@@ -138,7 +182,16 @@ class get_all_articles(Resource):
             FROM articles;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @articles.route("/articles/top/product")
 # Endpoint to get the data from the table product_count.
@@ -153,7 +206,16 @@ class get_top_articles(Resource):
             FROM product_count;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @articles.route("/articles/top/color")
 # Endpoint to get the data from the table color_count.
@@ -168,7 +230,16 @@ class get_top_colors(Resource):
             FROM color_count;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @articles.route("/articles/sold/count")
 # Endpoint to get the data from the table product_name_sales_count.
@@ -183,7 +254,16 @@ class get_top_articles_sold(Resource):
             FROM product_name_sales_count;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @articles.route("/articles/sold/revenue")
 # Endpoint to get the data from the table product_name_sales_sum.
@@ -198,7 +278,16 @@ class get_top_articles_sold_rev(Resource):
             FROM product_name_sales_sum;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @articles.route("/articles/<string:id>")
 @articles.doc(params = {'id': 'The ID of the article'})
@@ -215,7 +304,16 @@ class select_user(Resource):
             WHERE article_id = '{0}';""".format(id)
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 # ------------------------------------------ TRANSACTIONS ------------------------------------------
 '''
@@ -242,7 +340,16 @@ class get_all_transactions(Resource):
             FROM transactions;"""
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @transactions.route("/transactions/sum/<string:start_date>/<string:end_date>")
 @transactions.doc(params = {'start_date': 'The start date', 'end_date': 'The end date'})
@@ -260,7 +367,16 @@ class select_transactions_by_date(Resource):
             WHERE t_dat BETWEEN '{0}' AND '{1}'""".format(start_date, end_date)
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 @transactions.route("/transactions/avg/<string:start_date>/<string:end_date>")
 @transactions.doc(params = {'start_date': 'The start date', 'end_date': 'The end date'})
@@ -278,7 +394,16 @@ class select_transactions_by_date(Resource):
             WHERE t_dat BETWEEN '{0}' AND '{1}'""".format(start_date, end_date)
         result = conn.execute(select).fetchall()
         disconnect(conn)
-        return jsonify({'result': [dict(row) for row in result]})
+        if "Authorization" not in request.headers:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+        else:
+            header = request.headers["Authorization"]
+            token = header.split()[1]
+
+            if token in auth_db:
+                return jsonify({'result': [dict(row) for row in result]})
+            else:
+                return make_response(jsonify({"error": "unauthorized"}), 401)
 
 if __name__ == '__main__':
     app.run(debug = True, port = 5005)
