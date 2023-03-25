@@ -11,7 +11,7 @@ altair
 statistics
 # PIL
 streamlit_authenticator
-yaml
+# yaml
 yaml.loader
 streamlit_authenticator
 authenticator
