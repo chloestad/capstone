@@ -12,6 +12,6 @@ statistics
 # PIL
 streamlit_authenticator
 # yaml
-yaml.loader
+# yaml.loader
 streamlit_authenticator
 authenticator
