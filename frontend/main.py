@@ -56,12 +56,12 @@ if selected == "Customers":
 
     # ------------------------- Retrieving data from API endpoint -------------------------
     # Customer by age data.
-    response_customers_age = requests.get("http://127.0.0.1:5005/api/customers/ages")
+    response_customers_age = requests.get("https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/customers/ages")
     response_json_customers_age = response_customers_age.json()
     customers_data_age = load_data(response_json_customers_age)
 
     # Amount spent by customers by age.
-    response_customers_age_spent = requests.get("http://127.0.0.1:5005/api/customers/ages/spent")
+    response_customers_age_spent = requests.get("https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/customers/ages/spent")
     response_json_customers_age_spent = response_customers_age_spent.json()
     customers_data_spent_age = load_data(response_json_customers_age_spent)
 
@@ -142,26 +142,26 @@ if selected == "Articles":
 
     # ------------------------- Retrieving data from API endpoint -------------------------
     # Top articles
-    response_top_articles = requests.get("http://127.0.0.1:5005/api/articles/top/product")
+    response_top_articles = requests.get("https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/articles/top/product")
     response_json_top_articles = response_top_articles.json()
     top_articles_data = load_data(response_json_top_articles)
     # st.write('## Top articles')
     # st.dataframe(top_articles_data)
 
     # Top colors
-    response_top_articles_color = requests.get("http://127.0.0.1:5005/api/articles/top/color")
+    response_top_articles_color = requests.get("https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/articles/top/color")
     response_json_top_colors = response_top_articles_color.json()
     top_colors_data = load_data(response_json_top_colors)
     # st.write('## Top colors')
     # st.dataframe(top_colors_data)
 
     # Top articles sold (count)
-    response_sales_count = requests.get("http://127.0.0.1:5005/api/articles/sold/count")
+    response_sales_count = requests.get("https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/articles/sold/count")
     response_json_sales_count = response_sales_count.json()
     sales_count = load_data(response_json_sales_count)
 
     # Top articles sold (sum)
-    response_sales_sum = requests.get("http://127.0.0.1:5005/api/articles/sold/revenue")
+    response_sales_sum = requests.get("https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/articles/sold/revenue")
     response_json_sales_sum = response_sales_sum.json()
     sales_sum = load_data(response_json_sales_sum)
 
@@ -280,7 +280,7 @@ if selected == "Transactions":
 
     # ------------------------- Retrieving data from API endpoint -------------------------
     # Sum of price per day and channel id avg request and load data
-    response_sum_per_day= requests.get(f"http://127.0.0.1:5005/api/transactions/sum/{start_date}/{end_date}")
+    response_sum_per_day= requests.get(f"https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/transactions/sum/{start_date}/{end_date}")
     response_json_sum_per_day = response_sum_per_day.json()
     transactions_sum_day = load_data(response_json_sum_per_day)
     # st.write("## Total revenue per day (sum price per day)")
@@ -291,7 +291,7 @@ if selected == "Transactions":
 
 
     # Average price per day request and load data
-    response_avg_per_day= requests.get(f"http://127.0.0.1:5005/api/transactions/avg/{start_date}/{end_date}")
+    response_avg_per_day= requests.get(f"https://api-dot-titanium-vim-377008.oa.r.appspot.com/api/transactions/avg/{start_date}/{end_date}")
     response_json_avg_per_day = response_avg_per_day.json()
     transactions_avg_day = load_data(response_json_avg_per_day)
     # st.write("## Total average revenue per day (avg price per day)")
