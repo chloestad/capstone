@@ -5,3 +5,8 @@ pymysql
 matplotlib
 numpy
 requests
+streamlit_option_menu
+datetime
+altair
+statistics
+PIL
