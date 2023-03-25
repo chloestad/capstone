@@ -7,7 +7,7 @@ from streamlit_option_menu import option_menu
 import datetime
 import altair as alt
 from statistics import mean
-from PIL import Image 
+# from PIL import Image 
 
 # @st.cache_data
 @st.experimental_memo
@@ -27,7 +27,7 @@ selected = option_menu(
     orientation = "horizontal"
 )
 
-logo = Image.open('logo.png')
+# logo = Image.open('logo.png')
 
 # ---------------------------------------------------- HOME PAGE ----------------------------------------------------
 # If statement to enter the home page.
@@ -41,7 +41,7 @@ if selected == "Customers":
     st.write(f"Welcome to the {selected} page")
 
     # ----------------------------- Creating and adding filter sidebar -----------------------------
-    st.sidebar.image(logo, width=100)
+    # st.sidebar.image(logo, width=100)
     # Add side bar for filters.
     st.sidebar.write("## Filters for the Customers data")
 
@@ -137,7 +137,7 @@ if selected == "Articles":
 
     # ----------------------------- Creating filter sidebar -----------------------------
     # Add side bar for filters
-    st.sidebar.image(logo, width=100)
+    # st.sidebar.image(logo, width=100)
     st.sidebar.write("## Filters for the Articles data")
 
     # ------------------------- Retrieving data from API endpoint -------------------------
@@ -262,7 +262,7 @@ if selected == "Transactions":
     st.write(f"Welcome to the {selected} page")
 
     # --------------------------- Creating and adding filters ---------------------------
-    st.sidebar.image(logo, width=100)
+    # st.sidebar.image(logo, width=100)
     # Add side bar for filters
     st.sidebar.write("## Filters for the Transactions data")
 
