@@ -63,14 +63,14 @@ if authentication_status:
         orientation = "horizontal"
     )
 
-    logo = Image.open('logo.png')
+    logo = Image.open('frontend/logo.png')
 
     # ---------------------------------------------------- HOME PAGE ----------------------------------------------------
     # If statement to enter the home page.
     if selected == "Home":
         # st.image(logo, width=100)
         st.title(f"Welcome to the {selected} page")
-        st.write("""Welcome to my streamlit application. 
+        st.write("""Welcome to my streamlit application for H&M data. 
         In this app you will find a dashboard for each dataframe: Customers, Articles and Transactions.
         If you navigate through the top bar menu, you'll find a dashbord corresponding to every dataframe. 
         In each dashbord, there is a sidebar with filters that you can use to look for every detail and
