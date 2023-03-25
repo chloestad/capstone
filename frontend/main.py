@@ -13,9 +13,16 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth 
 import authenticator
+import os
 
 # ---------------------------------------------------- AUTH LOGIN ----------------------------------------------------
-with open('frontend/credentials.yaml') as file:
+# Get the current working directory
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Build the path to your credentials.yaml file
+credentials_path = os.path.join(current_directory, 'credentials.yaml')
+
+with open(credentials_path) as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 authenticator = stauth.Authenticate(

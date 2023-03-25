@@ -9,9 +9,7 @@ streamlit_option_menu
 datetime
 altair
 statistics
-# PIL
-streamlit_authenticator
-# yaml
-# yaml.loader
+PyYAML
 streamlit_authenticator
 authenticator
+Pillow
