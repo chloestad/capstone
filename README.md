@@ -148,3 +148,20 @@ The Transactions Dashboard is designed to provide insights into H&M's transactio
 ## 6.2. Filters
 
 The transactions dashboard has a filter for the time frame of the visualizations. This is so that the user that wants to visualize some specific dates, they can do so by modifying the time frame. The default time frame is set to the first and last day that we have data from, and the user cannot choose a timeframe outside of the dates that we have data. Notice that when the user changes the time frame, this will also be reflected on the title of the plots.
+
+# 7. Appendix
+
+The files used are:
+
+- api (folder)
+    - app.yaml
+    - main.py
+    - requirements.txt
+- frontend (folder)
+    - app.yaml
+    - main.py
+    - logo.png
+    - credentials.yaml
+    - requirements.txt
+- README.md
+- hashed_password.py
