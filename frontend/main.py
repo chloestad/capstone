@@ -63,7 +63,7 @@ if authentication_status:
         orientation = "horizontal"
     )
 
-    logo = Image.open('frontend/logo.png')
+    logo = Image.open('logo.png')
 
     # ---------------------------------------------------- HOME PAGE ----------------------------------------------------
     # If statement to enter the home page.
